@@ -30,16 +30,17 @@ export default function Home() {
           
           {/* Header */}
           <div className="flex items-center gap-3 mb-8">
-            <div className="flex items-center justify-center bg-white" style={{ width: '48px', height: '48px', borderRadius: '50%', border: '2px solid #d1d5db' }}>
+            <div className="flex items-center justify-center" style={{ width: '56px', height: '56px', borderRadius: '50%', backgroundColor: '#f5f5f5' }}>
               <Image 
                 src="/icono.png" 
                 alt="Shopping Cart"
-                width={24}
-                height={24}
+                width={50}
+                height={50}
                 style={{ objectFit: 'contain' }}
               />
             </div>
-            <h1 className="text-gray-800" style={{ fontSize: '28px', fontWeight: '400' }}>Your Shopping Cart</h1>
+            <div style={{ width: '2px', height: '40px', backgroundColor: '#d1d5db' }}></div>
+            <h1 className="text-gray-800" style={{ fontSize: '28px', fontWeight: '400', color: '#2a2a2a' }}>Your Shopping Cart</h1>
           </div>
 
           {/* Cart Items */}
@@ -111,8 +112,8 @@ export default function Home() {
         <div className="flex flex-col bg-gray-700" style={{ width: '480px', borderRadius: '0 24px 24px 0', backgroundColor: '#4a4a4a', position: 'relative' }}>
           
           {/* Decorative tab with circles - OUTSIDE the card */}
-          <div style={{ position: 'absolute', top: '60px', left: '-45px', width: '50px', height: '180px', backgroundColor: '#3a3a3a', borderRadius: '20px 0 20px 0', zIndex: 10 }}>
-            <div className="flex flex-col gap-3" style={{ position: 'absolute', top: '75px', left: '21px' }}>
+          <div style={{ position: 'absolute', top: '70px', left: '-40px', width: '45px', height: '140px', backgroundColor: '#4a4a4a', borderTopLeftRadius: '20px', borderBottomLeftRadius: '20px', zIndex: 10 }}>
+            <div className="flex flex-col gap-3" style={{ position: 'absolute', top: '50px', left: '18px' }}>
               <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#6a6a6a' }}></div>
               <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#d4af37' }}></div>
               <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#6a6a6a' }}></div>
