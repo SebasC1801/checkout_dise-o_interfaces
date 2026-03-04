@@ -5,6 +5,7 @@ import Image from "next/image";
 
 export default function Home() {
   const [quantities, setQuantities] = useState([2, 3, 1, 1]);
+  const [isCardOpen, setIsCardOpen] = useState(true);
 
   const cartItems = [
     { id: 1, name: "Denim T-Shirt", ref: "Ref: 4577832", color: "Blue", price: 7500, image: "/camiseta.png" },
@@ -23,7 +24,7 @@ export default function Home() {
 
   return (
     <div className="flex justify-center items-center bg-gray-200" style={{ minHeight: '100vh', padding: '40px' }}>
-      <div className="flex gap-0 bg-white" style={{ width: '1500px', height: '900px', borderRadius: '24px', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)' }}>
+      <div className="flex gap-0 bg-white" style={{ width: '1500px', height: '900px', borderRadius: '24px', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)', overflow: 'hidden' }}>
         
         {/* Left Panel - Shopping Cart */}
         <div className="flex flex-col bg-white" style={{ flex: '1', borderRadius: '24px 0 0 24px', padding: '48px 80px 48px 48px' }}>
@@ -109,23 +110,26 @@ export default function Home() {
         </div>
 
         {/* Right Panel - Card Details */}
-        <div className="flex flex-col bg-gray-700" style={{ width: '480px', borderRadius: '0 24px 24px 0', backgroundColor: '#4a4a4a', position: 'relative' }}>
+        <div className="flex flex-col bg-gray-700" style={{ width: '480px', borderRadius: '0 24px 24px 0', backgroundColor: 'rgba(90, 90, 90, 0.95)', position: 'relative', transition: 'transform 0.3s ease', transform: isCardOpen ? 'translateX(0)' : 'translateX(480px)', boxShadow: '-10px 0 20px rgba(0, 0, 0, 0.3)' }}>
           
           {/* Decorative tab with circles - OUTSIDE the card */}
-          <div style={{ position: 'absolute', top: '70px', left: '-40px', width: '45px', height: '140px', backgroundColor: '#4a4a4a', borderTopLeftRadius: '20px', borderBottomLeftRadius: '20px', zIndex: 10 }}>
+          <button 
+            onClick={() => setIsCardOpen(!isCardOpen)}
+            style={{ position: 'absolute', top: '70px', left: '-40px', width: '45px', height: '140px', backgroundColor: 'rgba(90, 90, 90, 0.95)', borderTopLeftRadius: '20px', borderBottomLeftRadius: '20px', zIndex: 10, border: 'none', cursor: 'pointer' }}
+          >
             <div className="flex flex-col gap-3" style={{ position: 'absolute', top: '50px', left: '18px' }}>
               <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#6a6a6a' }}></div>
               <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#d4af37' }}></div>
               <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#6a6a6a' }}></div>
             </div>
-          </div>
+          </button>
 
           <div className="flex flex-col" style={{ flex: '1', padding: '32px' }}>
             <h2 className="text-yellow-600 mb-12" style={{ fontSize: '32px', fontWeight: '400', color: '#d4af37', marginTop: '40px' }}>Card Details</h2>
 
             {/* Card Type Selection */}
             <div className="mb-10">
-              <label className="text-gray-400" style={{ display: 'block', fontSize: '16px', marginBottom: '20px' }}>Select Card Type</label>
+              <label className="text-gray-400" style={{ display: 'block', fontSize: '16px', marginBottom: '20px', color: '#e8e8e8' }}>Select Card Type</label>
               <div className="flex gap-8 items-center">
                 <button className="flex items-center justify-center" style={{ padding: '8px', backgroundColor: 'transparent', border: 'none', filter: 'brightness(0) invert(1)' }}>
                   <Image 
@@ -159,40 +163,40 @@ export default function Home() {
 
             {/* Card Number */}
             <div className="mb-10">
-              <label className="text-gray-400" style={{ display: 'block', fontSize: '16px', marginBottom: '16px' }}>Card Number</label>
+              <label className="text-gray-400" style={{ display: 'block', fontSize: '16px', marginBottom: '16px', color: '#e8e8e8' }}>Card Number</label>
               <input 
                 type="text" 
                 className="text-white"
-                style={{ width: '100%', backgroundColor: 'transparent', borderBottom: '1px solid #6b6b6b', padding: '12px 0', outline: 'none', fontSize: '16px' }}
+                style={{ width: '100%', backgroundColor: 'transparent', borderBottom: '1px solid #e8e8e8', padding: '12px 0', outline: 'none', fontSize: '16px', color: '#ffffff' }}
               />
             </div>
 
             {/* Expiry Date and CVV */}
             <div className="flex gap-8" style={{ marginBottom: 'auto' }}>
               <div style={{ flex: '1' }}>
-                <label className="text-gray-400" style={{ display: 'block', fontSize: '16px', marginBottom: '16px' }}>Expiry Date</label>
+                <label className="text-gray-400" style={{ display: 'block', fontSize: '16px', marginBottom: '16px', color: '#e8e8e8' }}>Expiry Date</label>
                 <input 
                   type="text" 
                   className="text-gray-500"
                   placeholder="___/___/___"
-                  style={{ width: '100%', backgroundColor: 'transparent', borderBottom: '1px solid #6b6b6b', padding: '12px 0', outline: 'none', fontSize: '16px' }}
+                  style={{ width: '100%', backgroundColor: 'transparent', borderBottom: '1px solid #e8e8e8', padding: '12px 0', outline: 'none', fontSize: '16px', color: '#e8e8e8' }}
                 />
               </div>
               <div style={{ width: '140px' }}>
-                <label className="text-gray-400" style={{ display: 'block', fontSize: '16px', marginBottom: '16px' }}>CVV</label>
+                <label className="text-gray-400" style={{ display: 'block', fontSize: '16px', marginBottom: '16px', color: '#e8e8e8' }}>CVV</label>
                 <input 
                   type="text" 
                   className="text-gray-500"
                   placeholder="___"
                   maxLength={3}
-                  style={{ width: '100%', backgroundColor: 'transparent', borderBottom: '1px solid #6b6b6b', padding: '12px 0', outline: 'none', fontSize: '16px' }}
+                  style={{ width: '100%', backgroundColor: 'transparent', borderBottom: '1px solid #e8e8e8', padding: '12px 0', outline: 'none', fontSize: '16px', color: '#e8e8e8' }}
                 />
               </div>
             </div>
           </div>
 
           {/* Checkout Button - Full Width at Bottom */}
-          <button className="text-gray-800" style={{ width: '100%', backgroundColor: '#f4c430', padding: '28px', fontSize: '26px', fontWeight: '500', color: '#2a2a2a', borderRadius: '0 0 24px 0' }}>
+          <button className="text-gray-800" style={{ width: '100%', backgroundColor: '#f4c430', padding: '28px', fontSize: '26px', fontWeight: '500', color: '#2a2a2a', borderRadius: '0 0 24px 0', textAlign: 'center' }}>
             Checkout
           </button>
         </div>
