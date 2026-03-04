@@ -22,11 +22,11 @@ export default function Home() {
   };
 
   return (
-    <div className="flex justify-center items-center bg-gray-200" style={{ minHeight: '100vh' }}>
-      <div className="flex gap-0 bg-white" style={{ width: '1600px', height: '900px', borderRadius: '24px', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)' }}>
+    <div className="flex justify-center items-center bg-gray-200" style={{ minHeight: '100vh', padding: '40px' }}>
+      <div className="flex gap-0 bg-white" style={{ width: '1500px', height: '900px', borderRadius: '24px', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)' }}>
         
         {/* Left Panel - Shopping Cart */}
-        <div className="flex flex-col bg-white p-8" style={{ flex: '1', borderRadius: '24px 0 0 24px' }}>
+        <div className="flex flex-col bg-white" style={{ flex: '1', borderRadius: '24px 0 0 24px', padding: '48px 80px 48px 48px' }}>
           
           {/* Header */}
           <div className="flex items-center gap-3 mb-8">
@@ -45,49 +45,49 @@ export default function Home() {
           {/* Cart Items */}
           <div className="flex flex-col gap-4" style={{ flex: '1', overflowY: 'auto' }}>
             {cartItems.map((item, index) => (
-              <div key={item.id} className="flex items-center gap-6 p-5" style={{ borderRadius: '16px', position: 'relative', backgroundColor: '#efefef' }}>
-                <div className="flex items-center justify-center" style={{ width: '100px', height: '100px', borderRadius: '50%', overflow: 'hidden', flexShrink: 0, backgroundColor: '#ffffff', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}>
+              <div key={item.id} className="flex items-center gap-4 p-4" style={{ borderRadius: '16px', position: 'relative', backgroundColor: '#efefef', paddingLeft: '16px', paddingRight: '16px' }}>
+                <div className="flex items-center justify-center" style={{ width: '80px', height: '80px', borderRadius: '50%', overflow: 'hidden', flexShrink: 0, backgroundColor: '#ffffff', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}>
                   <Image 
                     src={item.image} 
                     alt={item.name}
-                    width={90}
-                    height={90}
+                    width={70}
+                    height={70}
                     style={{ objectFit: 'contain' }}
                   />
                 </div>
                 
-                <div style={{ flex: '1', minWidth: '180px' }}>
-                  <h3 className="text-gray-800" style={{ fontWeight: '500', fontSize: '18px', marginBottom: '4px' }}>{item.name}</h3>
-                  <p className="text-gray-400" style={{ fontSize: '13px' }}>{item.ref}</p>
+                <div style={{ flex: '1', minWidth: '160px' }}>
+                  <h3 className="text-gray-800" style={{ fontWeight: '500', fontSize: '16px', marginBottom: '4px' }}>{item.name}</h3>
+                  <p className="text-gray-400" style={{ fontSize: '12px' }}>{item.ref}</p>
                 </div>
 
-                <div className="text-gray-600" style={{ fontSize: '16px', minWidth: '80px', textAlign: 'center' }}>{item.color}</div>
+                <div className="text-gray-600" style={{ fontSize: '15px', minWidth: '70px', textAlign: 'center' }}>{item.color}</div>
 
-                <div className="flex items-center gap-2" style={{ minWidth: '80px', justifyContent: 'center' }}>
-                  <span style={{ fontSize: '20px', fontWeight: '500' }}>{quantities[index]}</span>
+                <div className="flex items-center gap-2" style={{ minWidth: '70px', justifyContent: 'center' }}>
+                  <span style={{ fontSize: '18px', fontWeight: '500' }}>{quantities[index]}</span>
                   <div className="flex flex-col gap-1">
                     <button 
                       onClick={() => updateQuantity(index, 1)}
                       className="flex items-center justify-center bg-gray-400 text-white"
-                      style={{ width: '22px', height: '22px', borderRadius: '50%', fontSize: '14px', lineHeight: '1' }}
+                      style={{ width: '20px', height: '20px', borderRadius: '50%', fontSize: '13px', lineHeight: '1' }}
                     >
                       +
                     </button>
                     <button 
                       onClick={() => updateQuantity(index, -1)}
                       className="flex items-center justify-center bg-gray-400 text-white"
-                      style={{ width: '22px', height: '22px', borderRadius: '50%', fontSize: '14px', lineHeight: '1' }}
+                      style={{ width: '20px', height: '20px', borderRadius: '50%', fontSize: '13px', lineHeight: '1' }}
                     >
                       −
                     </button>
                   </div>
                 </div>
 
-                <div className="text-gray-800" style={{ minWidth: '140px', textAlign: 'right', fontWeight: '500', fontSize: '18px' }}>
+                <div className="text-gray-800" style={{ minWidth: '130px', textAlign: 'right', fontWeight: '500', fontSize: '16px' }}>
                   {(item.price * quantities[index]).toFixed(2)} NGN
                 </div>
 
-                <button className="text-gray-400" style={{ fontSize: '28px', lineHeight: '1', marginLeft: '8px' }}>×</button>
+                <button className="text-gray-400" style={{ fontSize: '24px', lineHeight: '1', marginLeft: '8px' }}>×</button>
               </div>
             ))}
           </div>
@@ -108,18 +108,18 @@ export default function Home() {
         </div>
 
         {/* Right Panel - Card Details */}
-        <div className="flex flex-col bg-gray-700" style={{ width: '480px', borderRadius: '0 24px 24px 0', backgroundColor: '#4a4a4a', position: 'relative', overflow: 'hidden' }}>
+        <div className="flex flex-col bg-gray-700" style={{ width: '480px', borderRadius: '0 24px 24px 0', backgroundColor: '#4a4a4a', position: 'relative' }}>
           
-          {/* Decorative tab with circles */}
-          <div style={{ position: 'absolute', top: '0', left: '-30px', width: '60px', height: '280px', backgroundColor: '#3a3a3a', borderRadius: '0 0 30px 0' }}>
-            <div className="flex flex-col gap-3" style={{ position: 'absolute', top: '120px', left: '26px' }}>
+          {/* Decorative tab with circles - OUTSIDE the card */}
+          <div style={{ position: 'absolute', top: '60px', left: '-45px', width: '50px', height: '180px', backgroundColor: '#3a3a3a', borderRadius: '20px 0 20px 0', zIndex: 10 }}>
+            <div className="flex flex-col gap-3" style={{ position: 'absolute', top: '75px', left: '21px' }}>
               <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#6a6a6a' }}></div>
               <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#d4af37' }}></div>
               <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#6a6a6a' }}></div>
             </div>
           </div>
 
-          <div className="flex flex-col p-8" style={{ flex: '1' }}>
+          <div className="flex flex-col" style={{ flex: '1', padding: '32px' }}>
             <h2 className="text-yellow-600 mb-12" style={{ fontSize: '32px', fontWeight: '400', color: '#d4af37', marginTop: '40px' }}>Card Details</h2>
 
             {/* Card Type Selection */}
@@ -188,12 +188,12 @@ export default function Home() {
                 />
               </div>
             </div>
-
-            {/* Checkout Button */}
-            <button className="text-gray-800 mt-8" style={{ width: '100%', backgroundColor: '#f4c430', padding: '20px', borderRadius: '8px', fontSize: '22px', fontWeight: '500' }}>
-              Checkout
-            </button>
           </div>
+
+          {/* Checkout Button - Full Width at Bottom */}
+          <button className="text-gray-800" style={{ width: '100%', backgroundColor: '#f4c430', padding: '28px', fontSize: '26px', fontWeight: '500', color: '#2a2a2a', borderRadius: '0 0 24px 0' }}>
+            Checkout
+          </button>
         </div>
       </div>
     </div>
