@@ -31,11 +31,13 @@ export default function Home() {
           {/* Header */}
           <div className="flex items-center gap-3 mb-8">
             <div className="flex items-center justify-center bg-white" style={{ width: '48px', height: '48px', borderRadius: '50%', border: '2px solid #d1d5db' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="9" cy="21" r="1"/>
-                <circle cx="20" cy="21" r="1"/>
-                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
-              </svg>
+              <Image 
+                src="/icono.png" 
+                alt="Shopping Cart"
+                width={24}
+                height={24}
+                style={{ objectFit: 'contain' }}
+              />
             </div>
             <h1 className="text-gray-800" style={{ fontSize: '28px', fontWeight: '400' }}>Your Shopping Cart</h1>
           </div>
@@ -43,7 +45,7 @@ export default function Home() {
           {/* Cart Items */}
           <div className="flex flex-col gap-4" style={{ flex: '1', overflowY: 'auto' }}>
             {cartItems.map((item, index) => (
-              <div key={item.id} className="flex items-center gap-6 bg-gray-50 p-5" style={{ borderRadius: '16px', position: 'relative' }}>
+              <div key={item.id} className="flex items-center gap-6 p-5" style={{ borderRadius: '16px', position: 'relative', backgroundColor: '#efefef' }}>
                 <div className="flex items-center justify-center" style={{ width: '100px', height: '100px', borderRadius: '50%', overflow: 'hidden', flexShrink: 0, backgroundColor: '#ffffff', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}>
                   <Image 
                     src={item.image} 
@@ -106,70 +108,92 @@ export default function Home() {
         </div>
 
         {/* Right Panel - Card Details */}
-        <div className="flex flex-col bg-gray-700 p-8" style={{ width: '580px', borderRadius: '0 24px 24px 0', backgroundColor: '#4a4a4a', position: 'relative' }}>
+        <div className="flex flex-col bg-gray-700" style={{ width: '480px', borderRadius: '0 24px 24px 0', backgroundColor: '#4a4a4a', position: 'relative', overflow: 'hidden' }}>
           
-          {/* Decorative circles */}
-          <div className="flex flex-col gap-3" style={{ position: 'absolute', top: '32px', right: '32px' }}>
-            <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#5a5a5a' }}></div>
-            <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#5a5a5a' }}></div>
-            <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#5a5a5a' }}></div>
-          </div>
-
-          <h2 className="text-yellow-600 mb-12" style={{ fontSize: '28px', fontWeight: '400', color: '#d4af37' }}>Card Details</h2>
-
-          {/* Card Type Selection */}
-          <div className="mb-8">
-            <label className="text-gray-300" style={{ display: 'block', fontSize: '15px', marginBottom: '16px' }}>Select Card Type</label>
-            <div className="flex gap-4">
-              <button className="text-white" style={{ padding: '14px 28px', borderRadius: '8px', backgroundColor: '#5a5a5a', fontWeight: '500' }}>
-                <span style={{ fontSize: '18px' }}>⚪⚪</span>
-              </button>
-              <button className="text-gray-400" style={{ padding: '14px 28px', borderRadius: '8px', backgroundColor: 'transparent', border: '1px solid #5a5a5a', fontSize: '15px' }}>
-                VISA
-              </button>
-              <button className="text-gray-400" style={{ padding: '14px 28px', borderRadius: '8px', backgroundColor: 'transparent', border: '1px solid #5a5a5a', fontSize: '15px' }}>
-                Verve
-              </button>
+          {/* Decorative tab with circles */}
+          <div style={{ position: 'absolute', top: '0', left: '-30px', width: '60px', height: '280px', backgroundColor: '#3a3a3a', borderRadius: '0 0 30px 0' }}>
+            <div className="flex flex-col gap-3" style={{ position: 'absolute', top: '120px', left: '26px' }}>
+              <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#6a6a6a' }}></div>
+              <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#d4af37' }}></div>
+              <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#6a6a6a' }}></div>
             </div>
           </div>
 
-          {/* Card Number */}
-          <div className="mb-6">
-            <label className="text-gray-300" style={{ display: 'block', fontSize: '15px', marginBottom: '12px' }}>Card Number</label>
-            <input 
-              type="text" 
-              className="text-white"
-              style={{ width: '100%', backgroundColor: 'transparent', borderBottom: '1px solid #6b7280', padding: '12px 0', outline: 'none', fontSize: '16px' }}
-            />
-          </div>
+          <div className="flex flex-col p-8" style={{ flex: '1' }}>
+            <h2 className="text-yellow-600 mb-12" style={{ fontSize: '32px', fontWeight: '400', color: '#d4af37', marginTop: '40px' }}>Card Details</h2>
 
-          {/* Expiry Date and CVV */}
-          <div className="flex gap-6" style={{ marginBottom: 'auto' }}>
-            <div style={{ flex: '1' }}>
-              <label className="text-gray-300" style={{ display: 'block', fontSize: '15px', marginBottom: '12px' }}>Expiry Date</label>
+            {/* Card Type Selection */}
+            <div className="mb-10">
+              <label className="text-gray-400" style={{ display: 'block', fontSize: '16px', marginBottom: '20px' }}>Select Card Type</label>
+              <div className="flex gap-8 items-center">
+                <button className="flex items-center justify-center" style={{ padding: '8px', backgroundColor: 'transparent', border: 'none', filter: 'brightness(0) invert(1)' }}>
+                  <Image 
+                    src="/icons/mastercard.svg" 
+                    alt="Mastercard"
+                    width={45}
+                    height={28}
+                    style={{ objectFit: 'contain' }}
+                  />
+                </button>
+                <button className="flex items-center justify-center" style={{ padding: '8px', backgroundColor: 'transparent', border: 'none', filter: 'grayscale(1) opacity(0.5)' }}>
+                  <Image 
+                    src="/icons/visa.svg" 
+                    alt="VISA"
+                    width={55}
+                    height={28}
+                    style={{ objectFit: 'contain' }}
+                  />
+                </button>
+                <button className="flex items-center justify-center" style={{ padding: '8px', backgroundColor: 'transparent', border: 'none', filter: 'grayscale(1) opacity(0.5)' }}>
+                  <Image 
+                    src="/icons/verve.svg" 
+                    alt="Verve"
+                    width={55}
+                    height={28}
+                    style={{ objectFit: 'contain' }}
+                  />
+                </button>
+              </div>
+            </div>
+
+            {/* Card Number */}
+            <div className="mb-10">
+              <label className="text-gray-400" style={{ display: 'block', fontSize: '16px', marginBottom: '16px' }}>Card Number</label>
               <input 
                 type="text" 
                 className="text-white"
-                placeholder="__ / __ / __"
-                style={{ width: '100%', backgroundColor: 'transparent', borderBottom: '1px solid #6b7280', padding: '12px 0', outline: 'none', fontSize: '16px' }}
+                style={{ width: '100%', backgroundColor: 'transparent', borderBottom: '1px solid #6b6b6b', padding: '12px 0', outline: 'none', fontSize: '16px' }}
               />
             </div>
-            <div style={{ width: '120px' }}>
-              <label className="text-gray-300" style={{ display: 'block', fontSize: '15px', marginBottom: '12px' }}>CVV</label>
-              <input 
-                type="text" 
-                className="text-white"
-                placeholder="___"
-                maxLength={3}
-                style={{ width: '100%', backgroundColor: 'transparent', borderBottom: '1px solid #6b7280', padding: '12px 0', outline: 'none', fontSize: '16px' }}
-              />
-            </div>
-          </div>
 
-          {/* Checkout Button */}
-          <button className="text-gray-800 mt-8" style={{ width: '100%', backgroundColor: '#f4c430', padding: '18px', borderRadius: '8px', fontSize: '20px', fontWeight: '500' }}>
-            Checkout
-          </button>
+            {/* Expiry Date and CVV */}
+            <div className="flex gap-8" style={{ marginBottom: 'auto' }}>
+              <div style={{ flex: '1' }}>
+                <label className="text-gray-400" style={{ display: 'block', fontSize: '16px', marginBottom: '16px' }}>Expiry Date</label>
+                <input 
+                  type="text" 
+                  className="text-gray-500"
+                  placeholder="___/___/___"
+                  style={{ width: '100%', backgroundColor: 'transparent', borderBottom: '1px solid #6b6b6b', padding: '12px 0', outline: 'none', fontSize: '16px' }}
+                />
+              </div>
+              <div style={{ width: '140px' }}>
+                <label className="text-gray-400" style={{ display: 'block', fontSize: '16px', marginBottom: '16px' }}>CVV</label>
+                <input 
+                  type="text" 
+                  className="text-gray-500"
+                  placeholder="___"
+                  maxLength={3}
+                  style={{ width: '100%', backgroundColor: 'transparent', borderBottom: '1px solid #6b6b6b', padding: '12px 0', outline: 'none', fontSize: '16px' }}
+                />
+              </div>
+            </div>
+
+            {/* Checkout Button */}
+            <button className="text-gray-800 mt-8" style={{ width: '100%', backgroundColor: '#f4c430', padding: '20px', borderRadius: '8px', fontSize: '22px', fontWeight: '500' }}>
+              Checkout
+            </button>
+          </div>
         </div>
       </div>
     </div>
